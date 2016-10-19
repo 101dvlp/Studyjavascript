@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML作成の練習</title>
+	<!-- ここからCSS -->
+	<style>
+		h1 {
+			color: #ff0000;
+		}		
+	</style>
+	<!-- ここまでCSS -->
+</head>
+<body>
+	<h1>次のステップ</h1>
+	<p>window.promptで閲覧者にテキストの入力を促すことができます。<br>
+	この部分はHTMLで書かれている文章です。この下にJavaScriptで文章が書き出されます。</p>
+	<!-- ここからJavaScript -->
+	<script>
+		//入力を促して
+		x = window.prompt("何か文章を入力してみてください"); //①
+		//入力されたテキストを書き出します。
+		document.write(x); //②
+	</script>
+	<!-- ここまでJavaScript -->
+	<p>この部分もHTMLで書かれている文章です。上の文章はJavaScriptが書き出している文章です。</p>
+</body>
+</html>
