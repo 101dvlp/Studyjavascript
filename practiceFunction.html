@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>タブ式表示の作成</title>
+  <!-- ここからJavaScript -->
+  <script>
+  function P2A(X){ //括弧の中にXとあります
+    //引数のXをアラートで表示します。
+    alert(X + "が押されました");
+  }
+  </script>
+  <!-- ここまでJavaScript -->
+</head>
+<body>
+<p>下のボタンを押すとfunctionを呼び出します<br>
+左右のボタンで同じfunctionを呼び出しますが<br>
+引数を変えているので別のメッセージが出ます</p>
+<!-- 左側のボタン -->
+<button onclick="P2A('左のボタン');">押してみましょう</button>
+&nbsp;
+<!-- 右側のボタン -->
+<button onclick="P2A('右のボタン')">押してみましょう</button>
+</body>
+</html>
