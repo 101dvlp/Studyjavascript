@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>画像ビューワー</title>
+	<script>
+		function INIT(){
+			//URLの後ろについている？以降の部分を抽出します
+			var GET_OP = location.search;
+			//GET_OPには「?no=1」のような文字列が入っています
+			//欲しいのは最後の数字なので、この文字列を分解します
+
+			//まず先頭の?がいりません。取ってしまいましょう
+			//先頭の2文字目以降を取得します
+			GET_OP = GET_OP.substr(1);
+
+			//続いて＝で分解します。結果は配列で管理します
+			var AR_OP = GET_OP.split("=");
+
+			//=で分解したので配列AR_OPの0番目は＝の前、1番目は＝後ろです
+			//欲しいのは＝の後ろですからAR_OP[1]をみます
+			var IMG_NO =AR_OP[1];
+			//書き出すHTMLを生成します
+			var IMG_NAME = '<img src="test0' + IMG_NO + '.jpg" width="500">';
+			document.getElementById("canvas").innerHTML = IMG_NAME;
+		}
+	</script>
+</head>
+<body onLoad="INIT();">
+	<p>拡大画像を表示します</p>
+	<!-- 下のdivに画像が表示されます -->
+	<div id="canvas" style="text-align:center"></div>
+	<button onclick="window.close();">このウィンドウを閉じる</button>
+
+</body>
+</html>

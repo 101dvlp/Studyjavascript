@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Webサービスの学習</title>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCKCU10Vtw7m2nJw-dj6Zwlt0W5aZyBFzA">
+	</script>
+
+	<script>
+		function init(){
+			var mapOptions = {
+				center: new google.maps.LatLng(35.6890,139.7011),
+				zoom:15,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+
+			var map = new google.maps.Map(
+				//下のカッコの中にある"maps"が地図を表示する<div>のidです
+				document.getElementById("maps"),mapOptions
+			);
+		}
+	</script>
+</head>
+<body>
+	<button onclick="init()">地図の表示</button>
+	<!--下のdivが地図の表示域です。idをコードと合わせましょう-->
+	<div id="maps" style="width:500px; height:500px;"></div>
+</body>
+</html>

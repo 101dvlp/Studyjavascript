@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>HTML作成の練習</title>
+	<style>
+		body{
+			background-color:"#888888";	
+		}
+		#tab_area{
+			height:300px;
+			width:900px;
+		}
+		#tab_index{
+			height:30px;
+			width:60%;
+			color:#ffffff;
+			text-align: center;
+		}
+		#tab_index_a{
+			height: 30px;
+			width: 33%;
+			background-color: #ffff00;
+			color: #000000;
+			text-align: center;
+			cursor: pointer;
+			padding-top: 0.5em;
+			float: left;
+		}
+		#tab_index_b{
+			height: 30px;
+			width: 33%;
+			background-color: #0000ff;
+			color: #ffffff;
+			text-align: center;
+			cursor: pointer;
+			padding-top: 0.5em;
+			float: left;
+		}
+		#tab_index_c{
+			height:30px;
+			width: 33%;
+			background-color: #ff0000;
+			color: #ffffff;
+			text-align: center;
+			cursor: pointer;
+			padding-top: 0.5em;
+			float: left;
+		}
+		#tab_main{
+			height: 230px;
+			width: 600px;
+			background-color: #ffff00;
+			padding: 2em 2em 2em 2em;
+			clear: both;
+		}
+		#tab_main_a{
+			height: 230px;
+			width: 100%;
+			background-color: #ffff00;
+			display: block;
+		}
+		#tab_main_b{
+			height: 230px;
+			width: 100%;
+			background-color: #0000ff;
+			color: #ffffff;
+			display: none;
+		}
+		#tab_main_c{
+			height: 230px;
+			width: 100%;
+			color: #ffffff;
+			background-color: #ff0000;
+			display: none;
+		}
+	</style>
+
+	<script>
+		function Contents_Change(x){
+			if(x==1){
+				document.getElementById("tab_main").style.backgroundColor = "ffff00";
+				document.getElementById("tab_main_a").style.display = "block";
+				document.getElementById("tab_main_b").style.display = "none";
+				document.getElementById("tab_main_c").style.display = "none";
+			}
+			if(x==2){
+				document.getElementById("tab_main").style.backgroundColor = "0000ff";
+				document.getElementById("tab_main_a").style.display = "none";
+				document.getElementById("tab_main_b").style.display = "block";
+				document.getElementById("tab_main_c").style.display = "none";				
+			}
+			if(x==3){
+				document.getElementById("tab_main").style.backgroundColor = "ff0000";
+				document.getElementById("tab_main_a").style.display = "none";
+				document.getElementById("tab_main_b").style.display = "none";
+				document.getElementById("tab_main_c").style.display = "block";				
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>タブ型表示域の作成</h1>
+	<div id="tab_area">
+		<div id="tab_index">
+			<div id="tab_index_a" onclick="Contents_Change(1)">tab1</div>
+			<div id="tab_index_b" onclick="Contents_Change(2)">tab2</div>
+			<div id="tab_index_c" onclick="Contents_Change(3)">tab3</div>
+		</div>
+		<div id="tab_main">
+			<div id="tab_main_a">ここは黄色いタブのテキスト表示域です。</div>
+			<div id="tab_main_b">ここは青いタブのテキスト表示域です。</div>
+			<div id="tab_main_c">ここは赤いタブのテキスト表示域です。</div>
+		</div>
+	</div>
+</body>
+</html>

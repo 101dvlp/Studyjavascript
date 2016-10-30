@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS3の学習</title>
+	<style>
+	/*左ボタン*/
+	td#left_s{
+		cursor: pointer;
+		width: 20px;
+		text-align: center;
+		color: #ffffff;
+		background-color: #664444;
+	}
+	/*右ボタン*/
+	td#right_s{
+		cursor: pointer;
+		width: 20px;
+		text-align: center;
+		color: #ffffff;
+		background-color: #664444;
+	}
+	/*画像3枚を含む*/
+	div#div_a{
+		perspective: 500px; /*3D深度*/
+	}
+	/*左の画像*/
+	img#img_a{
+		position: relative;
+		cursor: pointer;
+		transform: rotateY(-45deg); /*傾斜*/
+	}
+	/*真ん中の画像*/
+	img#img_b{
+		position: relative;
+		z-index: 1;
+		cursor: pointer;
+		transform: scale(1.2); /*ちょっと拡大*/
+		transition: transform 0.5s linear 0s; /*変形効果*/
+	}
+	/*右の画像*/
+	img#img_c{
+		position: relative;
+		cursor: pointer;
+		transform: rotateY(45deg); /*傾斜*/
+	}
+	/*真ん中の画像にカーソルが乗ったときの処理*/
+	img#img_b:hover{
+		z-index: 99; /*最前面に出して*/
+		transform: scale(2.0); /*拡大*/
+	}
+	</style>
+
+	<script>
+		//1番左の画像番号test0●.jpgの●の部分の数字
+		//functionの外で宣言されているのでfunctionで上書きされた値は保持されます。
+		//1はページがロードされたときの初期値です
+		var left_img = 1;
+
+		function slide_img(x){
+			var img_a = document.getElementById("img_a");
+			var img_b = document.getElementById("img_b");
+			var img_c = document.getElementById("img_c");
+
+			//左がクリックされたら
+			if(x==1){
+				//左がクリックされたら画像の番号は1ずつ増えます
+				left_img++; //left_img +1 と同じ計算
+				draw_img(); //画像の差し替えfunctionの呼び出し
+			}
+
+			//右がクリックされたら
+			if(x==2){
+				//右がクリックされたら画像の番号は１ずつ減ります
+				left_img--; //left_img-1と同じ計算
+				draw_img(); //画像の差し替えfunctionの呼び出し
+			}
+		}
+
+		//画像の書き出し
+		function draw_img(){
+			//右回転でも左回転でも書き出し処理は同じなので
+			//ここにまとめてfunctionにしておいて呼び出します
+			img_a.src = "test0" + chk_no(left_img) + ".jpg";
+			img_b.src = "test0" + chk_no(left_img + 1) + ".jpg";
+			img_c.src = "test0" + chk_no(left_img + 2) + ".jpg";
+
+			//一番左の画像番号が1～3の間か節句して上書き
+			left_img = chk_no(left_img);
+		}
+
+		//加算と減算でtest00.jpgやtest04.jpgといった
+		//存在しないファイル名が生成されないようにするための判定
+		function chk_no(y){
+			//もし3より大きかったら3を引きます
+			if(y>3){
+				y = y-3;
+			}
+			//もし1より小さかったら3を足します
+			if(y<1){
+				y = y+3;
+			}
+			//上の計算結果を返します
+			//1～3のときには上の計算を通らないので、そのままの数が返されます。
+			return(y);
+		}
+	</script>
+
+</head>
+<body>
+	<h1>横スライド式画像ビューワ</h1>
+	<p>左右のバーで画像を入れ替えます</p>
+	<table>
+		<tr>
+			<td id="left_s" onclick="slide_img(1);">&lt;</td>
+			<td id="id_c">
+				<div id="div_a">
+					<img src="test01.jpg" width="200" id="img_a">
+					<img src="test02.jpg" width="200" id="img_b">
+					<img src="test03.jpg" width="200" id="img_c">
+				</div>
+			</td>
+			<td id="right_s" onclick="slide_img(2);">&gt;</td>
+		</tr>
+	</table>
+</body>
+</html>

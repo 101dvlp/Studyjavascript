@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>画像ビューワー</title>
+	<script>
+		//画像をクリックすると呼び出されるfunction
+		function img_v(x){
+			//何番目の画像を選択したのかは引数xに入っています
+			//この引数をビューワ用ウィンドウにHTMLの引数として渡します
+			var V_URL = "viewer01.html?no=" + x;
+
+			//ビューワ用の別ウィンドウを開きます
+			window.open(V_URL, "viewer", "width=600,height=500,menubar=no,toolbar=no,scrollbars=no");
+		}
+	</script>
+</head>
+<body>
+	<p>画像をクリックすると拡大表示します</p>
+	<table>
+		<tr>
+			<td>
+				<!-- widthを200に指定して表示サイズを縮めています -->
+				<img src="test01.jpg" width="200" onclick="img_v(1);">
+			</td>
+			<td>
+				<img src="test02.jpg" width="200" onclick="img_v(2);">
+			</td>
+			<td>
+				<img src="test03.jpg" width="200" onclick="img_v(3);">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

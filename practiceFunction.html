@@ -6,20 +6,25 @@
   <!-- ここからJavaScript -->
   <script>
   function P2A(X){ //括弧の中にXとあります
-    //引数のXをアラートで表示します。
-    alert(X + "が押されました");
+    //引数のXの中身によって処理を分岐します
+    if(X==1){
+    	alert('トマトを食べなさい');
+    }
+    //xが2だったら
+    if(X==2){
+    	alert('ビールを飲むといいよ');
+    }
   }
   </script>
   <!-- ここまでJavaScript -->
 </head>
 <body>
 <p>下のボタンを押すとfunctionを呼び出します<br>
-左右のボタンで同じfunctionを呼び出しますが<br>
-引数を変えているので別のメッセージが出ます</p>
-<!-- 左側のボタン -->
-<button onclick="P2A('左のボタン');">押してみましょう</button>
-&nbsp;
-<!-- 右側のボタン -->
-<button onclick="P2A('右のボタン')">押してみましょう</button>
+今の気分はどっちに近いでしょう？<br>
+<!-- 上のボタン -->
+<button onclick="P2A(1)">ビタミンが足りていない気がする</button>
+<br><br>
+<!-- 下のボタン -->
+<button onclick="P2A(2)">暑くてバテ気味、喉も渇く</button>
 </body>
 </html>

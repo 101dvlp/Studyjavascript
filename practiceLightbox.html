@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>画像ビューワー</title>
+	<style>
+		/*bodyの初期設定*/
+		#bd{
+			background-color: #ffffff;
+		}
+		/*ビューワーの設定*/
+		#view{
+			position: absolute; /*絶対座標で表示*/
+			top: 100px; /*初期表示位置*/
+			left: 100px; /*初期表示位置*/
+			width: 500px; /*幅*/
+			height: 350px; /*高さ*/
+			padding: 1em; /*余白*/
+			background-color: #ffffff; /*背景色*/
+			text-align: center; /*中央寄せ表示*/
+			display: none; /*初期状態では表示しません*/
+		}
+		img{
+			/*CSS3の表記*/
+			transition: transform 1.2s linear;
+		}
+		img:hover{
+			/*CSS3の記法*/
+			transform: rotate(360deg);
+		}
+	</style>
+
+	<script>
+		function img_v(x){
+			//背景色の変更
+			document.getElementById("bd").style.backgroundColor = "#404040";
+
+			//透過率の設定
+			document.getElementById("mask").style.opacity = "0.2";
+
+			//ビューワ用HTMLの生成
+			var LB = '<img src="test0' + x + '.jpg" width="400">';
+			LB += '<br><button onclick="back2main()">閉じる</button>';
+			//innerHTMLでビューワ部の<div>に書き出し
+			document.getElementById("view").innerHTML = LB;
+
+			//画面の中央に出します
+			//ブラウザ全体の幅を取得
+			var vleft = (document.body.clientWidth/2 - 500/2);
+			var vtop = (document.body.clientHeight/2 -350/2);
+
+			if(vtop < 0){
+				vtop = 150;
+			}
+			//topおleftを調整して画面の真ん中あたりに
+			document.getElementById("view").style.left = vleft + "px";
+			document.getElementById("view").style.top = vtop + "px";
+
+			//装飾
+			//角を丸くして
+			document.getElementById("view").style.borderRadius = "10px";
+			//影をつけます
+			document.getElementById("view").style.boxShadow = "10px 10px 10px 5px rgba(0,0,0,1.0)";
+
+			//非表示部分を解除してビューワ部の表示
+			document.getElementById("view").style.display = "block";
+		}
+
+		function back2main(){
+			//ビューワ部分を消して
+			document.getElementById("view").style.display = "none";
+
+			//背景色と透過度の復元
+			document.getElementById("bd").style.backgroundColor = "#ffffff";
+			document.getElementById("mask").style.opacity = "1.0";
+		}
+	</script>
+</head>
+<body id="bd"> <!--操作のしやすさのためにidをつけています-->
+	<div id="mask"><!--ビューワを除く全体を括る-->
+		<p id="cont">画像をクリックすると拡大表示します</p>
+
+		<table id="tbl">
+			<tr>
+				<td>
+					<!--widthを200に指定して表示サイズを縮めています-->
+					<img src="test01.jpg" width="200" onclick="img_v(1);">
+				</td>
+				<td>
+					<img src="test02.jpg" width="200" onclick="img_v(2);">
+				</td>
+				<td>
+					<img src="test03.jpg" width="200" onclick="img_v(3);">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="view"></div><!--ここがビューワになります-->
+
+</body>
+</html>

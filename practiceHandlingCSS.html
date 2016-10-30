@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSSを操作する</title>
+	<script>
+		function addNode(){
+			//追加する子ノードを生成します
+			var CHILD = document.createElement("p");
+			//子ノードの属性を指定します
+			CHILD.setAttribute("id","CLD");
+			//このノードのタグで囲まれている部分のテキストを指定します
+			CHILD.innerHTML = "これが追加されたpタグ領域です";
+
+			//どこに追加するのかidで親ノードを指定します
+			var PARENT = document.getElementById("OUTPUT");
+			//子ノードを追加の書き方は一緒です
+			PARENT.appendChild(CHILD);
+
+			//書き出した子ノードにCSSを後付で指定します
+			var CLD = document.getElementById("CLD");
+			//CSSでcolor:#ff0000と指定するのと同等
+			CLD.style.color = "#ff0000";
+
+			//CSSを使ってボタンを消します。
+			//document.getElementById("BTN").style.display = "none";
+			document.getElementById("BTN").setAttribute("disabled", true);
+			var btnName = document.getElementById("BTN");
+			btnName.innerHTML = "押せません";
+		}
+	</script>
+</head>
+<body>
+	<h1>ノードを追加します</h1>
+
+	<!-- idを指定します -->
+	<div id="OUTPUT"></div>
+
+	<div>
+		<p>ここはHTMLで書き出しているテキストです。<br>
+		ボタンを押すとこの上に赤いテキストが追加されます。<br>
+		ボタンは一回押すと押せなくなります。
+		</p>
+	</div>
+
+	<button id="BTN" onclick="addNode()">
+		見出しの下に文章を追加します。
+	</button>
+
+</body>
+</html>
