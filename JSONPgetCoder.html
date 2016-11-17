@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Webサービスの学習</title>
+</head>
+<body>
+    <h1>JSONPとJavaScript</h1>
+    <h2>JSONPの値へのアクセス練習</h2>
+    <script>
+        function foo(data){
+            //データは10件返ってきますが、その中の0番目のデータから緯度と経度を出します
+            //地名の取得
+            document.write(data["Feature"][0]["Name"]);
+            //読み仮名の取得
+            document.write("(" + data["Feature"][0]["Property"]["Yomi"] + ")<br>");
+
+            var lotlon = new Array();
+            lotlon = data["Feature"][0]["Geometry"]["Coordinates"].split(",");
+
+            document.write("東経：" + lotlon[0]);
+            document.write("<br>");
+            document.write("北緯：" + lotlon[1]);
+        }
+    </script>
+    <script src="http://geo.search.olp.yahooapis.jp/OpenLocalPlatform/V1/geoCoder?appid=dj0zaiZpPW80MXpTNk1qR1BuSyZzPWNvbnN1bWVyc2VjcmV0Jng9NDA-&query=東京都西新宿&output=json&callback=foo">
+    </script>
+
+</body>
+</html>
