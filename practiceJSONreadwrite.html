@@ -5,11 +5,20 @@
     <title>Webサービスの学習</title>
     <script>
     //JSON形式のデータです
-    var JS = {
-        "name":"apple",
-        "color":"red",
-        "season":"winter"
-    }
+    var JS = {"shop_menu": [
+        {
+            "name" : "しょうゆラーメン",
+            "price" : 500
+        },
+        {
+            "name" : "塩ラーメン",
+            "price" : 600
+        },
+        {
+            "name" : "味噌ラーメン",
+            "price" : 650
+        }
+    ]}
     </script>
 </head>
 <body>
@@ -17,20 +26,23 @@
 このJSONに含まれているキーと値の一覧
 <ul>
     <script>
-    //キーと値の一覧を出力します
-    for(keys in JS){
-        document.write("<li>" + keys + ":" + JS[keys] + "</li>");
+    alert("データの総数は" + JS["shop_menu"].length + "です" );
+    //リストの始端
+    document.write("<ul>");
+    for( i=0 ; i < JS["shop_menu"].length ; i++ ){
+        document.write("<li>" + i + "番目のデータ</li>");
+        document.write("<ul>");
+        //キーと値の一覧を出力します
+        for( keys in JS["shop_menu"][i] ){
+            document.write("<li>" + keys + ":" + JS["shop_menu"][i][keys] + "</li>" );
+        }
+        document.write("</ul>");
     }
     //リストの終端
     document.write("</ul>");
-    //nameにnullを代入して上書きしてみます
-    JS["name"] = null;
-    //元々のJSONにはなかったキーを追加してみます
-    JS["area"] = "aomori";
-    //追加したがここで削除します
-    delete JS["area"];
-    //nullで上書きしたものと削除したものが反映されているか確認します
-    alert(JS["name"] + "\r" + JS["area"]);
+    //特定のデータへのアクセス方法
+    //0番目のnameなら
+    alert(JS["shop_menu"][0]["name"]);
     </script>
 </body>
 </html>
