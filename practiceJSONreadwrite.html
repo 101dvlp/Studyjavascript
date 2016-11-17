@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Webサービスの学習</title>
+    <script>
+    //JSON形式のデータです
+    var JS = {
+        "name":"apple",
+        "color":"red",
+        "season":"winter"
+    }
+    //nameの値が何かを見ます
+    alert(JS["name"]);
+    //nameに別の値を代入して上書きしてみます
+    JS["name"] = "orange";
+    //元々のJSONにはなかったキーを追加してみます
+    JS["area"] = "nagano";
+    //上書きしたものと追加したものが反映されているか確認します
+    alert(JS["name"] + "\r" + JS["area"]);
+    </script>
+</head>
+<body>
+<h1>JSONとJavaScript</h1>
+</body>
+</html>
