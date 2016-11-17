@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Webサービスの学習</title>
+    <script>
+    JS({
+        "name":"apple",
+        "color":"red",
+        "season":"winter"
+    })
+    function JS(data){
+        alert("何もしなくてもここが呼び出されます");
+        //引数に対して[]でキーを指定すると値にアクセスできます
+        alert(data["name"]);
+    }
+    </script>
+</head>
+<body onload="init()">
+<h1>JSONPとJavaScript</h1>
+JSONPの値へのアクセス練習
+<div id="view"></div>
+</body>
+</html>
