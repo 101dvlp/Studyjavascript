@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5's API</title>
+    <script>
+        function init(){
+            if(document.cookie){
+                //日本語は記録時にエスケープされているのでunescapeで戻します
+                document.cookie = unescape(document.cookie);
+
+                //必要ならばここで「val=」を取る処理をしましょう
+                var test = document.cookie;
+                var testValue = new Array();
+                testValue = test.split("=");
+                //取得したcookieを表示します
+                alert("cookieが記録されています" + document.cookie);
+                alert(testValue[0] + "\n" + testValue[1]);
+            }
+        }
+
+        function rec(){
+            //テキストボックスに入力があったら
+            if(document.form_1.text_1.value){
+                //日本語はエスケープが必要なのでescape処理します
+                var cstr = escape(document.form_1.text_1.value);
+                //記録するデータに名前をつけます
+                //この例ではval=値という形で記録します
+                cstr = "val=" + cstr;
+                alert("次の形式でcookieを記録します\r" + cstr);
+
+                //cookieを記録します
+                document.cookie = cstr;
+            } else { //入力がなかったら
+                alert("記録するテキストを入力してください");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>cookieとJavaScript</h1>
+    <form name="form_1">
+        記録する文字列を入力してください
+        <input type="text" name="text_1"><br><br>
+        <input type="button" onClick="rec()" value="cookieを記録します" ><br>
+        <br>
+        <input type="button" onClick="init()" value="記録しているcookieを確認">
+    </form>
+</body>
+</html>
