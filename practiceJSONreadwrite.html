@@ -4,45 +4,23 @@
     <meta charset="utf-8">
     <title>Webサービスの学習</title>
     <script>
-    //JSON形式のデータです
-    var JS = {"shop_menu": [
-        {
-            "name" : "しょうゆラーメン",
-            "price" : 500
-        },
-        {
-            "name" : "塩ラーメン",
-            "price" : 600
-        },
-        {
-            "name" : "味噌ラーメン",
-            "price" : 650
+        function init(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "test1.txt", true);
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                    //<div id="view">に対して取得結果を出力
+                    var view = document.getElementById("view");
+                    view.innerHTML = xmlhttp.responseText;
+                }
+            }
+            xmlhttp.send(null);
         }
-    ]}
     </script>
 </head>
-<body>
+<body onLoad="init()">
 <h1>JSONとJavaScript</h1>
-このJSONに含まれているキーと値の一覧
-<ul>
-    <script>
-    alert("データの総数は" + JS["shop_menu"].length + "です" );
-    //リストの始端
-    document.write("<ul>");
-    for( i=0 ; i < JS["shop_menu"].length ; i++ ){
-        document.write("<li>" + i + "番目のデータ</li>");
-        document.write("<ul>");
-        //キーと値の一覧を出力します
-        for( keys in JS["shop_menu"][i] ){
-            document.write("<li>" + keys + ":" + JS["shop_menu"][i][keys] + "</li>" );
-        }
-        document.write("</ul>");
-    }
-    //リストの終端
-    document.write("</ul>");
-    //特定のデータへのアクセス方法
-    //0番目のnameなら
-    alert(JS["shop_menu"][0]["name"]);
-    </script>
+<h2>XMLHttpRequestを使って外部ファイルを読み込みます</h2>
+<div id="view"></div>
 </body>
 </html>
