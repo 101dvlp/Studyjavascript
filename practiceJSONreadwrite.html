@@ -10,17 +10,27 @@
         "color":"red",
         "season":"winter"
     }
-    //nameの値が何かを見ます
-    alert(JS["name"]);
-    //nameに別の値を代入して上書きしてみます
-    JS["name"] = "orange";
-    //元々のJSONにはなかったキーを追加してみます
-    JS["area"] = "nagano";
-    //上書きしたものと追加したものが反映されているか確認します
-    alert(JS["name"] + "\r" + JS["area"]);
     </script>
 </head>
 <body>
 <h1>JSONとJavaScript</h1>
+このJSONに含まれているキーと値の一覧
+<ul>
+    <script>
+    //キーと値の一覧を出力します
+    for(keys in JS){
+        document.write("<li>" + keys + ":" + JS[keys] + "</li>");
+    }
+    //リストの終端
+    document.write("</ul>");
+    //nameにnullを代入して上書きしてみます
+    JS["name"] = null;
+    //元々のJSONにはなかったキーを追加してみます
+    JS["area"] = "aomori";
+    //追加したがここで削除します
+    delete JS["area"];
+    //nullで上書きしたものと削除したものが反映されているか確認します
+    alert(JS["name"] + "\r" + JS["area"]);
+    </script>
 </body>
 </html>
